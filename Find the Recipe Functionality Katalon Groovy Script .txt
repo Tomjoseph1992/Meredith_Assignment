@@ -1,0 +1,48 @@
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+
+//Navigate to the URL
+WebUI.openBrowser('')
+WebUI.navigateToUrl('https://www.allrecipes.com/')
+//Maximize the window
+WebUI.maximizeWindow()
+
+//All receipe Homepage
+WebUI.click(findTestObject('Allrecipes Homepage/Find_Recipe_text'))
+WebUI.delay(2)
+WebUI.setText(findTestObject('Allrecipes Homepage/Find_Recipe_text'),
+	 'Ice Cream')
+WebUI.delay(2)
+WebUI.click(findTestObject('Allrecipes Homepage/Search_button'))
+WebUI.delay(2)
+
+//Recipe Results for Ice Cream Page
+//Verify the Page title
+WebUI.verifyTextPresent('Recipe Results for Ice Cream', true)
+//Click on the Chocolate Ice Cream Mug Cake button
+WebUI.click(findTestObject('Recipe Results for Ice Cream Page/Chocolate Ice Cream Mug Cake'))
+WebUI.delay(2)
+
+//Chocolate Ice Cream Mug Cake Page
+//Verify the Page title
+WebUI.verifyTextPresent('Chocolate Ice Cream Mug Cake', true)
+WebUI.delay(5)
+
+//close the browser
+WebUI.closeBrowser()
